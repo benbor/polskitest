@@ -4,6 +4,7 @@ import { useState } from "react"
 import PhraseInput from "./components/PhraseInput"
 import CheckButton from "./components/CheckButton"
 import ScoreDisplay from "./components/ScoreDisplay"
+import {Timer} from "./components/Timer";
 
 const phrases = [
   { "phrase": "Mam na imię Piotr. ___ w Krakowie.", "answer": "Mieszkam" },
@@ -18,6 +19,7 @@ export default function Home() {
   const [results, setResults] = useState<boolean[]>([])
   const [score, setScore] = useState<number | null>(null)
 
+
   const handleInputChange = (index: number, value: string) => {
     const newInputs = [...userInputs]
     newInputs[index] = value
@@ -30,9 +32,15 @@ export default function Home() {
     setScore(newResults.filter(Boolean).length)
   }
 
+  const handleFinish = () => {
+    console.log('Finish');
+    setResults([]);
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
       <h1 className="text-4xl font-bold mb-8">Ćwiczenia gramatyczne ze słowami</h1>
+      <Timer initSeconds={5} onFinish={handleFinish}></Timer>
       <div className="space-y-4 mb-8">
         {phrases.map((phrase, index) => (
           <PhraseInput
