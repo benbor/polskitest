@@ -6,6 +6,10 @@ import CheckButton from "./components/CheckButton"
 import ScoreDisplay from "./components/ScoreDisplay"
 import {Timer} from "./components/Timer";
 
+import { useToast } from "@/hooks/use-toast"
+import {Button} from "@/components/ui/button";
+
+
 const phrases = [
   { "phrase": "Mam na imię Piotr. ___ w Krakowie.", "answer": "Mieszkam" },
   { "phrase": "Dzisiaj jest ładna ___. Świeci słońce.", "answer": "pogoda" },
@@ -18,7 +22,7 @@ export default function Home() {
   const [userInputs, setUserInputs] = useState(Array(5).fill(""))
   const [results, setResults] = useState<boolean[]>([])
   const [score, setScore] = useState<number | null>(null)
-
+  const { toast } = useToast()
 
   const handleInputChange = (index: number, value: string) => {
     const newInputs = [...userInputs]
@@ -39,6 +43,17 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
+      <Button
+          onClick={() => {
+            toast({
+              title: "Scheduled: Catch up",
+              description: "Friday, February 10, 2023 at 5:57 PM",
+            })
+          }}
+      >
+        Show Toast
+      </Button>
+
       <h1 className="text-4xl font-bold mb-8">Ćwiczenia gramatyczne ze słowami</h1>
       <Timer initSeconds={5} onFinish={handleFinish}></Timer>
       <div className="space-y-4 mb-8">
@@ -56,6 +71,7 @@ export default function Home() {
       <CheckButton onClick={handleCheck} />
       {score !== null && <ScoreDisplay score={score} total={phrases.length} />}
     </main>
+
   )
 }
 
