@@ -1,9 +1,6 @@
 
 const isProd = process.env.NODE_ENV === "production";
 
-console.log("My value");
-console.log(isProd);
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: "export",
