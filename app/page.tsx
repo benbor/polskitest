@@ -6,11 +6,11 @@ import CheckButton from "./components/CheckButton"
 import ScoreDisplay from "./components/ScoreDisplay"
 
 const phrases = [
-  { phrase: "The cat ___ on the mat.", answer: "sat" },
-  { phrase: "She ___ to the store yesterday.", answer: "went" },
-  { phrase: "They ___ their homework every night.", answer: "do" },
-  { phrase: "The sun ___ brightly in the sky.", answer: "shines" },
-  { phrase: "We ___ to music in the car.", answer: "listen" },
+  { "phrase": "Mam na imię Piotr. ___ w Krakowie.", "answer": "Mieszkam" },
+  { "phrase": "Dzisiaj jest ładna ___. Świeci słońce.", "answer": "pogoda" },
+  { "phrase": "Lubię ___ kawę rano.", "answer": "pić" },
+  { "phrase": "To jest mój brat. ___ ma na imię Adam.", "answer": "On" },
+  { "phrase": "💩Idziemy do ___ na zakupy.", "answer": "sklepu" },
 ]
 
 export default function Home() {
@@ -31,8 +31,8 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold mb-8">Word Grammar Practice</h1>
+    <main className="flex min-h-screen flex-col items-center justify-center">
+      <h1 className="text-4xl font-bold mb-8">Ćwiczenia gramatyczne ze słowami</h1>
       <div className="space-y-4 mb-8">
         {phrases.map((phrase, index) => (
           <PhraseInput
