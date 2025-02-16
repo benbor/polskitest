@@ -1,12 +1,16 @@
 {
   "name": "polskitest",
   "version": "0.1.0",
+  "homepage": "https://benbor.github.io/polskitest/",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
